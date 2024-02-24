@@ -2,7 +2,9 @@
   "scripts": {
     "dev": "bun run --hot src/index.tsx",
     "build": "bun build ./src/index.tsx --outdir build --target bun --minify",
-    "pm2": "bun run build && pm2 start --interpreter ~/.bun/bin/bun -n mac-awake build/index.js && pm2 save"
+    "init": "bun i -g wake-on-lan",
+    "pm2": "bun run init && bun run build && bun run pm2:run && pm2 save",
+    "pm2:run": "pm2 start --interpreter ~/.bun/bin/bun -n mac-awake build/index.js"
   },
   "dependencies": {
     "@hono/zod-validator": "^0.1.11",

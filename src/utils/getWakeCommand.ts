@@ -1,7 +1,7 @@
 import { $ } from 'bun'
 
 const getWakeCommand = async (): Promise<string> => {
-  const checkCommands = ['etherwake', 'wake-on-lan']
+  const checkCommands = ['wake-on-lan', 'etherwake' ]
 
   for (const command of checkCommands) {
     const commandMeta = await $`which ${command} &> /dev/null`
@@ -12,7 +12,7 @@ const getWakeCommand = async (): Promise<string> => {
   }
 
   throw new Error(
-    `No command wake found. (install: either 'etherwake' or 'wake-on-lan')`
+    `No command wake found. (install: either 'wake-on-lan' or 'etherwake')`
   )
 }
 
