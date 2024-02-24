@@ -1,11 +1,3 @@
-To install dependencies:
-```sh
-bun install
-```
+# mac-awake
 
-To run:
-```sh
-bun run dev
-```
-
-open http://localhost:3000
+Turns thing on 🔥
