@@ -1,7 +1,9 @@
 import { $ } from 'bun'
 import { Hono } from 'hono'
 import { basicAuth } from 'hono/basic-auth'
+import { logger } from 'hono/logger'
 import { App } from './template'
+import getWakeCommand from './utils/getWakeCommand'
 
 const app = new Hono()
 
@@ -11,6 +13,7 @@ app.use(
     username: Bun.env.W_USERNAME,
     password: Bun.env.W_PASSWORD,
   }),
+  logger(),
 )
 
 app.get('/', (c) => {
@@ -18,7 +21,8 @@ app.get('/', (c) => {
 })
 
 app.post('/fff', async (c) => {
-  const shell = await $`etherwake ${Bun.env.W_MAC} 2> /dev/null`
+  const command = await getWakeCommand()
+  const shell = await $`${command} ${Bun.env.W_MAC}`
 
   if (shell.exitCode === 1) {
     return c.json({data: '😥'})
