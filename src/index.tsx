@@ -32,4 +32,7 @@ app.post('/fff', async (c) => {
   return c.json({data: '👍'})
 })
 
-export default app
+export default {
+  fetch: app.fetch,
+  port: Bun.env.W_PORT ?? 11010,
+}
