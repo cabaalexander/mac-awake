@@ -25,11 +25,11 @@ app.post('/fff', async (c) => {
   const shell = await $`${command} ${Bun.env.W_MAC}`
 
   if (shell.exitCode === 1) {
-    return c.json({data: '😥'})
+    return c.html(<App icon='⛈️' />)
   }
   
   
-  return c.json({data: '👍'})
+  return c.html(<App icon='🌻' />)
 })
 
 export default {
