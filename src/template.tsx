@@ -21,11 +21,12 @@ const Layout = (props: LayoutProps) => (
 
 type AppProps = {
   icon?: string;
+  noSubmit?: boolean;
 }
 export const App = (props: AppProps) => (
   <Layout bodyClassName='bg-gradient-to-tr from-slate-800 via-stone-700 to-neutral-500' title={props.icon ?? '🔥'}>
     <form class='absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]' action='/fff' method='post'>
-      <button class='text-6xl bg-gradient-to-bl from-slate-800 via-stone-700 to-neutral-500 p-16 rounded-ee-full rounded-ss-full '>
+      <button disabled={props.noSubmit ?? false} class='text-6xl bg-gradient-to-bl from-slate-800 via-stone-700 to-neutral-500 p-16 rounded-ee-full rounded-ss-full '>
         {props.icon ?? '🔥'}
       </button>
     </form>

@@ -7,6 +7,8 @@ const getWakeCommand = async (): Promise<string> => {
     const commandMeta = await $`which ${command} &> /dev/null`
 
     if (commandMeta.exitCode === 0) {
+      console.log(`Wake using '${command}' command.`);
+      
       return command
     }
   }

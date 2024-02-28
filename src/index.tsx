@@ -25,11 +25,10 @@ app.post('/fff', async (c) => {
   const shell = await $`${command} ${Bun.env.W_MAC}`
 
   if (shell.exitCode === 1) {
-    return c.html(<App icon='⛈️' />)
+    return c.html(<App icon='⛈️' noSubmit />)
   }
   
-  
-  return c.html(<App icon='🌻' />)
+  return c.html(<App icon='🌻' noSubmit />)
 })
 
 export default {
