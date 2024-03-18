@@ -1,6 +1,6 @@
 # use the official Bun image
 # see all versions at https://hub.docker.com/r/oven/bun/tags
-FROM oven/bun:1 as base
+FROM oven/bun:alpine as base
 WORKDIR /usr/src/app
 
 COPY . .
@@ -37,8 +37,7 @@ RUN bun install --frozen-lockfile
 # COPY --from=prerelease /usr/src/app/package.json .
 
 # install etherwake and config
-RUN apt update
-RUN apt install etherwake -y
+RUN apk add awake
 
 # run the app
 # USER bun
