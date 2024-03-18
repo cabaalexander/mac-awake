@@ -38,6 +38,6 @@ RUN apt install etherwake -y
 
 # run the app
 # USER bun
-EXPOSE 3000/tcp
+EXPOSE 11010/tcp
 ENTRYPOINT [ "bun", "run", "index.js" ]
 
