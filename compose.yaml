@@ -2,5 +2,5 @@ services:
   web:
     build: .
     network_mode: host
-    ports:
-      - "11010:11010"
+    restart: unless-stopped
+
