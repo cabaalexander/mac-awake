@@ -1,0 +1,14 @@
+services:
+  web:
+    build: .
+    network_mode: host
+    restart: unless-stopped
+    environment:
+      - W_USERNAME=${W_USERNAME}
+      - W_PASSWORD=${W_PASSWORD}
+      - W_MAC=${W_MAC}
+      - W_BYPASS=${W_BYPASS}
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.http-0-mac-awake.rule=Host(`mac-awake.10.0.0.37.sslip.io`) && PathPrefix(`/`)
+      - traefik.http.routers.http-0-mac-awake.entryPoints=http
