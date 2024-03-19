@@ -7,14 +7,16 @@ import getWakeCommand from './utils/getWakeCommand'
 
 const app = new Hono()
 
-app.use(
-  '*',
-  basicAuth({
-    username: Bun.env.W_USERNAME,
-    password: Bun.env.W_PASSWORD,
-  }),
-  logger(),
-)
+if ( Bun.env.W_BYPASS !== 'true' ) {
+  app.use(
+    '*',
+    basicAuth({
+      username: Bun.env.W_USERNAME,
+      password: Bun.env.W_PASSWORD,
+    }),
+    logger(),
+  )
+}
 
 app.get('/', (c) => {
   return c.html(<App />)
